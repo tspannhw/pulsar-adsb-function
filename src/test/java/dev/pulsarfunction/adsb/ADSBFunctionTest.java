@@ -6,6 +6,7 @@ import org.apache.pulsar.functions.api.BaseContext;
 import org.apache.pulsar.functions.api.Context;
 import org.junit.Test;
 
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Collection;
 
@@ -42,7 +43,7 @@ public class ADSBFunctionTest {
     @Test
     public void testADSBFunction() {
         ADSBFunction func = new ADSBFunction();
-        func.process(JSON_STRING, mock(Context.class));
+        func.process(JSON_STRING.getBytes(StandardCharsets.UTF_8), mock(Context.class));
     }
 
     /**
@@ -52,35 +53,34 @@ public class ADSBFunctionTest {
     public static void main(String[] args) throws Exception {
 
         // multiple topics
-//        Collection<String> inputTopics = new ArrayList<String>();
-//        inputTopics.add("persistent://public/default/adsbraw");
-//
-//       FunctionConfig functionConfig = FunctionConfig.builder()
-//                .className(ADSBFunction.class.getName())
-//                .inputs(inputTopics)
-//                .name("ADBSFunc")
-//                .runtime(FunctionConfig.Runtime.JAVA)
-//                .autoAck(true)
-//                .build();
-//
-//       LocalRunner localRunner = LocalRunner.builder()
-//               .brokerServiceUrl("pulsar://pulsar1:6650")
-//               .functionConfig(functionConfig)
-//               .build();
+        Collection<String> inputTopics = new ArrayList<String>();
+        inputTopics.add("persistent://public/default/adsbraw");
+
+       FunctionConfig functionConfig = FunctionConfig.builder()
+                .className(ADSBFunction.class.getName())
+                .inputs(inputTopics)
+                .name("ADBSFunc")
+                .runtime(FunctionConfig.Runtime.JAVA)
+                .autoAck(true)
+                .build();
+
+       LocalRunner localRunner = LocalRunner.builder()
+               .brokerServiceUrl("pulsar://pulsar1:6650")
+               .functionConfig(functionConfig)
+               .build();
+
         /**
-         *
-         *
         LocalRunner localRunner = LocalRunner.builder()
                 .brokerServiceUrl("pulsar+ssl://demo.sndemo.snio.cloud:6651")
                 .clientAuthPlugin("org.apache.pulsar.client.impl.auth.AuthenticationToken")
-                .clientAuthParams("eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6Ik5rRXdSVVU1TUVOQlJrWTJNalEzTVRZek9FVkZRVVUyT0RNME5qUkRRVEU1T1VNMU16STVPUSJ9.eyJodHRwczovL3N0cmVhbW5hdGl2ZS5pby91c2VybmFtZSI6InRzcGFubkBzbmRlbW8uYXV0aC5zdHJlYW1uYXRpdmUuY2xvdWQiLCJpc3MiOiJodHRwczovL2F1dGguc3RyZWFtbmF0aXZlLmNsb3VkLyIsInN1YiI6IkNJRzFGTlNmRnNiOXMyc2lSRHNoY0xCZE1zNWtEMUxzQGNsaWVudHMiLCJhdWQiOiJ1cm46c246cHVsc2FyOnNuZGVtbzpkZW1vLWNsdXN0ZXIiLCJpYXQiOjE2NDk5MzQ4MjksImV4cCI6MTY1MDUzOTYyOSwiYXpwIjoiQ0lHMUZOU2ZGc2I5czJzaVJEc2hjTEJkTXM1a0QxTHMiLCJzY29wZSI6ImFkbWluIGFjY2VzcyIsImd0eSI6ImNsaWVudC1jcmVkZW50aWFscyIsInBlcm1pc3Npb25zIjpbImFkbWluIiwiYWNjZXNzIl19.hXmqplmhxVD-hFrtEJSJSOgNDq0dwxFntfz4PXNsKrDBQZe2gxPfztR13cdpeDJzlza_rCOLfFCqCqzcnV1DJFnoSpsVNjygBrHkiTXKxufDuyvvReLYDujtMuDUl5mr-y5IlKpeiUEIbk3RaW_AVVP6XCzxxqlXNQBq8OLJ3IpYFowM1TRjgEIvHw-K9f-j_BxNDaFTzi1VE40_zUZ1mDA2u9QFre-zhJ84j_Wjj-qdXWygd4BI2lj4MEtK6FODVQVab_cStHYNtx7mA7wk2KsPkXoJ1qWLrL8NjlS7YjLd69vJQTyAkGqzTgr3K5R3TIOinA6KG6ZzJqQmdZhBKQ")
+                .clientAuthParams("------")
                 .functionConfig(functionConfig)
                 .build();
          */
 
-//        localRunner.start(false);
-//        Thread.sleep(30000);
-//        localRunner.stop();
-//        System.exit(0);
+        localRunner.start(false);
+        Thread.sleep(30000);
+        localRunner.stop();
+        System.exit(0);
     }
 }

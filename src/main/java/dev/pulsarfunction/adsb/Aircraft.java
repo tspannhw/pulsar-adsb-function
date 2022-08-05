@@ -10,7 +10,6 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Aircraft implements Serializable
 {
-
     /**
      *
      *   hex (String optional)
@@ -56,7 +55,7 @@ public class Aircraft implements Serializable
     @Override
     public String toString() {
         return new StringJoiner(", ", Aircraft.class.getSimpleName() + "[", "]")
-                .add("flight='" + flight.trim() + "'")
+                .add("flight='" + getFlight() + "'")
                 .add("category='" + category + "'")
                 .add("emergency='" + emergency + "'")
                 .add("mach=" + mach)
@@ -130,8 +129,8 @@ public class Aircraft implements Serializable
     }
 
     public String getFlight() {
-        if (flight !=null) {
-            return flight.trim();
+        if (this.flight != null) {
+            return this.flight.trim();
         }
         else {
             return null;

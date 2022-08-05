@@ -1,7 +1,8 @@
 package dev.pulsarfunction.adsb;
 
 import org.apache.pulsar.client.impl.schema.JSONSchema;
-import org.apache.pulsar.functions.api.*;
+import org.apache.pulsar.functions.api.Context;
+import org.apache.pulsar.functions.api.Function;
 
 import java.util.List;
 import java.util.UUID;
@@ -9,7 +10,7 @@ import java.util.UUID;
 /**
  * ADSB Function
 **/
-public class ADSBFunction implements Function<String, Void> {
+public class ADSBFunction implements Function<byte[], Void> {
 
     public static final String JAVA = "Java";
     public static final String LANGUAGE = "language";
@@ -17,13 +18,13 @@ public class ADSBFunction implements Function<String, Void> {
     public static final String ERROR = "ERROR:";
     public static final String PERSISTENT_PUBLIC_DEFAULT = "persistent://public/default/aircraft";
 
+
     /** PROCESS */
     @Override
-    public Void process(String input, Context context) {
+    public Void process(byte[] input, Context context) {
         if ( input == null || context == null ) {
             return null;
         }
-        System.out.println("Input topics:" + context.getInputTopics().toString() );
 
         if ( context.getLogger() != null && context.getLogger().isDebugEnabled() ) {
             context.getLogger().debug("LOG:" + input.toString());
@@ -59,12 +60,14 @@ public class ADSBFunction implements Function<String, Void> {
                 }
 
                 for (Aircraft aircraft: aircraftList) {
-                    if (aircraft != null && aircraft.getFlight() != null && aircraft.getFlight().trim().length() > 0) {
-                        context.newOutputMessage(PERSISTENT_PUBLIC_DEFAULT, JSONSchema.of(Aircraft.class))
-                                .key(UUID.randomUUID().toString())
-                                .property(LANGUAGE, JAVA)
-                                .value(aircraft)
-                                .send();
+                    if (aircraft != null && aircraft.getFlight() != null) {
+                        if ( aircraft.getFlight().trim().length() > 0 ) {
+                            context.newOutputMessage(PERSISTENT_PUBLIC_DEFAULT, JSONSchema.of(Aircraft.class))
+                                    .key(UUID.randomUUID().toString())
+                                    .property(LANGUAGE, JAVA)
+                                    .value(aircraft)
+                                    .send();
+                        }
                     }
                     if ( context.getLogger() != null  && context.getLogger().isDebugEnabled() ) {
                         context.getLogger().debug(MESSAGE_JSON + aircraft.toString());

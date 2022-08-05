@@ -17,10 +17,10 @@ import java.util.List;
 public class AirCraftParserService {
 
     /**
-     * parse raw NiFi message or Spring message
+     * parse raw ADSB JSON message
      *
      * @param message
-     * @return Observation
+     * @return List of Aircraft
      */
     private List<Aircraft> parseMessage(String message) {
         List<Aircraft> aircraftList = new ArrayList<>();
@@ -41,7 +41,6 @@ public class AirCraftParserService {
                     for (JsonNode node : aircraftsNode) {
                         Aircraft newJsonNode = mapper.treeToValue(node, Aircraft.class);
                         aircraftList.add(newJsonNode);
-                        //System.out.println("Node:" + newJsonNode.toString());
                     }
                 }
             }
@@ -62,12 +61,12 @@ public class AirCraftParserService {
      * @param input device as a raw string in bytes
      * @return Observation object
      */
-    public List<Aircraft> deserialize(String input) {
+    public List<Aircraft> deserialize(byte[] input) {
         if (input == null) {
             return null;
         }
         else {
-            return parseMessage(input);
+            return parseMessage(new String(input));
         }
     }
 }
