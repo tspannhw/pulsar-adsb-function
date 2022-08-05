@@ -61,6 +61,9 @@ public class ADSBFunction implements Function<byte[], Void> {
 
                 for (Aircraft aircraft: aircraftList) {
                     if (aircraft != null && aircraft.getAltBaro() != null) {
+                        System.out.println("ab:" + aircraft.getAltBaro());
+                        System.out.println("flight:" + aircraft.toString());
+
                         if ( aircraft.getAltBaro() > 0 ) {
                             context.newOutputMessage(PERSISTENT_PUBLIC_DEFAULT, JSONSchema.of(Aircraft.class))
                                     .key(UUID.randomUUID().toString())

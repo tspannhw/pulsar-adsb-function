@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.StringJoiner;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -182,24 +183,35 @@ public class Aircraft implements Serializable
     }
 
     private String hex;
+    @JsonProperty("alt_baro")
     private Integer altBaro;
+    @JsonProperty("alt_geom")
     private Integer altGeom;
     private Double gs;
     private Double track;
+    @JsonProperty("baro_rate")
     private Integer baroRate;
+    @JsonProperty("nav_qnh")
     private Double navQnh;
+    @JsonProperty("nav_altitude_mcp")
     private Integer navAltitudeMcp;
+    @JsonProperty("nav_heading")
     private Double navHeading;
     private Double lat;
     private Double lon;
     private Integer nic;
     private Integer rc;
+    @JsonProperty("seen_post")
     private Double seenPos;
     private Integer version;
+    @JsonProperty("nic_baro")
     private Integer nicBaro;
+    @JsonProperty("nac_p")
     private Integer nacP;
+    @JsonProperty("nac_v")
     private Integer nacV;
     private Integer sil;
+    @JsonProperty("sil_type")
     private String silType;
     private Integer gva;
     private Integer sda;
