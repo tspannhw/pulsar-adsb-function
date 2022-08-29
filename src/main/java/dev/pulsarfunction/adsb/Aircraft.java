@@ -56,32 +56,32 @@ public class Aircraft implements Serializable
     @Override
     public String toString() {
         return new StringJoiner(", ", Aircraft.class.getSimpleName() + "[", "]")
-                .add("flight='" + getFlight() + "'")
+                .add("flight='" + flight + "'")
                 .add("category='" + category + "'")
                 .add("emergency='" + emergency + "'")
                 .add("mach=" + mach)
                 .add("speed=" + speed)
                 .add("squawk=" + squawk)
                 .add("hex='" + hex + "'")
-                .add("altBaro=" + altBaro)
-                .add("altGeom=" + altGeom)
+                .add("alt_baro=" + alt_baro)
+                .add("alt_geom=" + alt_geom)
                 .add("gs=" + gs)
                 .add("track=" + track)
-                .add("baroRate=" + baroRate)
-                .add("navQnh=" + navQnh)
-                .add("navAltitudeMcp=" + navAltitudeMcp)
-                .add("navHeading=" + navHeading)
+                .add("baro_rate=" + baro_rate)
+                .add("nav_qnh=" + nav_qnh)
+                .add("nav_altitude_mcp=" + nav_altitude_mcp)
+                .add("nav_heading=" + nav_heading)
                 .add("lat=" + lat)
                 .add("lon=" + lon)
                 .add("nic=" + nic)
                 .add("rc=" + rc)
-                .add("seenPos=" + seenPos)
+                .add("seen_post=" + seen_post)
                 .add("version=" + version)
-                .add("nicBaro=" + nicBaro)
-                .add("nacP=" + nacP)
-                .add("nacV=" + nacV)
+                .add("nic_baro=" + nic_baro)
+                .add("nac_p=" + nac_p)
+                .add("nac_v=" + nac_v)
                 .add("sil=" + sil)
-                .add("silType='" + silType + "'")
+                .add("sil_type='" + sil_type + "'")
                 .add("gva=" + gva)
                 .add("sda=" + sda)
                 .add("mlat=" + mlat)
@@ -92,7 +92,7 @@ public class Aircraft implements Serializable
                 .toString();
     }
 
-    public Aircraft(String flight, String category, String emergency, Double mach, Double speed, Integer squawk, String hex, Integer altBaro, Integer altGeom, Double gs, Double track, Integer baroRate, Double navQnh, Integer navAltitudeMcp, Double navHeading, Double lat, Double lon, Integer nic, Integer rc, Double seenPos, Integer version, Integer nicBaro, Integer nacP, Integer nacV, Integer sil, String silType, Integer gva, Integer sda, List<Object> mlat, List<Object> tisb, Integer messages, Double seen, Double rssi) {
+    public Aircraft(String flight, String category, String emergency, Double mach, Double speed, Integer squawk, String hex, Integer alt_baro, Integer alt_geom, Double gs, Double track, Integer baro_rate, Double nav_qnh, Integer nav_altitude_mcp, Double nav_heading, Double lat, Double lon, Integer nic, Integer rc, Double seen_post, Integer version, Integer nic_baro, Integer nac_p, Integer nac_v, Integer sil, String sil_type, Integer gva, Integer sda, List<Object> mlat, List<Object> tisb, Integer messages, Double seen, Double rssi) {
         super();
         this.flight = flight;
         this.category = category;
@@ -101,25 +101,25 @@ public class Aircraft implements Serializable
         this.speed = speed;
         this.squawk = squawk;
         this.hex = hex;
-        this.altBaro = altBaro;
-        this.altGeom = altGeom;
+        this.alt_baro = alt_baro;
+        this.alt_geom = alt_geom;
         this.gs = gs;
         this.track = track;
-        this.baroRate = baroRate;
-        this.navQnh = navQnh;
-        this.navAltitudeMcp = navAltitudeMcp;
-        this.navHeading = navHeading;
+        this.baro_rate = baro_rate;
+        this.nav_qnh = nav_qnh;
+        this.nav_altitude_mcp = nav_altitude_mcp;
+        this.nav_heading = nav_heading;
         this.lat = lat;
         this.lon = lon;
         this.nic = nic;
         this.rc = rc;
-        this.seenPos = seenPos;
+        this.seen_post = seen_post;
         this.version = version;
-        this.nicBaro = nicBaro;
-        this.nacP = nacP;
-        this.nacV = nacV;
+        this.nic_baro = nic_baro;
+        this.nac_p = nac_p;
+        this.nac_v = nac_v;
         this.sil = sil;
-        this.silType = silType;
+        this.sil_type = sil_type;
         this.gva = gva;
         this.sda = sda;
         this.mlat = mlat;
@@ -184,35 +184,35 @@ public class Aircraft implements Serializable
 
     private String hex;
     @JsonProperty("alt_baro")
-    private Integer altBaro;
+    private Integer alt_baro;
     @JsonProperty("alt_geom")
-    private Integer altGeom;
+    private Integer alt_geom;
     private Double gs;
     private Double track;
     @JsonProperty("baro_rate")
-    private Integer baroRate;
+    private Integer baro_rate;
     @JsonProperty("nav_qnh")
-    private Double navQnh;
+    private Double nav_qnh;
     @JsonProperty("nav_altitude_mcp")
-    private Integer navAltitudeMcp;
+    private Integer nav_altitude_mcp;
     @JsonProperty("nav_heading")
-    private Double navHeading;
+    private Double nav_heading;
     private Double lat;
     private Double lon;
     private Integer nic;
     private Integer rc;
     @JsonProperty("seen_post")
-    private Double seenPos;
+    private Double seen_post;
     private Integer version;
     @JsonProperty("nic_baro")
-    private Integer nicBaro;
+    private Integer nic_baro;
     @JsonProperty("nac_p")
-    private Integer nacP;
+    private Integer nac_p;
     @JsonProperty("nac_v")
-    private Integer nacV;
+    private Integer nac_v;
     private Integer sil;
     @JsonProperty("sil_type")
-    private String silType;
+    private String sil_type;
     private Integer gva;
     private Integer sda;
     private List<Object> mlat = null;
@@ -238,20 +238,20 @@ public class Aircraft implements Serializable
         this.hex = hex;
     }
 
-    public Integer getAltBaro() {
-        return altBaro;
+    public Integer getAlt_baro() {
+        return alt_baro;
     }
 
-    public void setAltBaro(Integer altBaro) {
-        this.altBaro = altBaro;
+    public void setAlt_baro(Integer alt_baro) {
+        this.alt_baro = alt_baro;
     }
 
-    public Integer getAltGeom() {
-        return altGeom;
+    public Integer getAlt_geom() {
+        return alt_geom;
     }
 
-    public void setAltGeom(Integer altGeom) {
-        this.altGeom = altGeom;
+    public void setAlt_geom(Integer alt_geom) {
+        this.alt_geom = alt_geom;
     }
 
     public Double getGs() {
@@ -270,36 +270,36 @@ public class Aircraft implements Serializable
         this.track = track;
     }
 
-    public Integer getBaroRate() {
-        return baroRate;
+    public Integer getBaro_rate() {
+        return baro_rate;
     }
 
-    public void setBaroRate(Integer baroRate) {
-        this.baroRate = baroRate;
+    public void setBaro_rate(Integer baro_rate) {
+        this.baro_rate = baro_rate;
     }
 
-    public Double getNavQnh() {
-        return navQnh;
+    public Double getNav_qnh() {
+        return nav_qnh;
     }
 
-    public void setNavQnh(Double navQnh) {
-        this.navQnh = navQnh;
+    public void setNav_qnh(Double nav_qnh) {
+        this.nav_qnh = nav_qnh;
     }
 
-    public Integer getNavAltitudeMcp() {
-        return navAltitudeMcp;
+    public Integer getNav_altitude_mcp() {
+        return nav_altitude_mcp;
     }
 
-    public void setNavAltitudeMcp(Integer navAltitudeMcp) {
-        this.navAltitudeMcp = navAltitudeMcp;
+    public void setNav_altitude_mcp(Integer nav_altitude_mcp) {
+        this.nav_altitude_mcp = nav_altitude_mcp;
     }
 
-    public Double getNavHeading() {
-        return navHeading;
+    public Double getNav_heading() {
+        return nav_heading;
     }
 
-    public void setNavHeading(Double navHeading) {
-        this.navHeading = navHeading;
+    public void setNav_heading(Double nav_heading) {
+        this.nav_heading = nav_heading;
     }
 
     public Double getLat() {
@@ -334,12 +334,12 @@ public class Aircraft implements Serializable
         this.rc = rc;
     }
 
-    public Double getSeenPos() {
-        return seenPos;
+    public Double getSeen_post() {
+        return seen_post;
     }
 
-    public void setSeenPos(Double seenPos) {
-        this.seenPos = seenPos;
+    public void setSeen_post(Double seen_post) {
+        this.seen_post = seen_post;
     }
 
     public Integer getVersion() {
@@ -350,28 +350,28 @@ public class Aircraft implements Serializable
         this.version = version;
     }
 
-    public Integer getNicBaro() {
-        return nicBaro;
+    public Integer getNic_baro() {
+        return nic_baro;
     }
 
-    public void setNicBaro(Integer nicBaro) {
-        this.nicBaro = nicBaro;
+    public void setNic_baro(Integer nic_baro) {
+        this.nic_baro = nic_baro;
     }
 
-    public Integer getNacP() {
-        return nacP;
+    public Integer getNac_p() {
+        return nac_p;
     }
 
-    public void setNacP(Integer nacP) {
-        this.nacP = nacP;
+    public void setNac_p(Integer nac_p) {
+        this.nac_p = nac_p;
     }
 
-    public Integer getNacV() {
-        return nacV;
+    public Integer getNac_v() {
+        return nac_v;
     }
 
-    public void setNacV(Integer nacV) {
-        this.nacV = nacV;
+    public void setNac_v(Integer nac_v) {
+        this.nac_v = nac_v;
     }
 
     public Integer getSil() {
@@ -382,12 +382,12 @@ public class Aircraft implements Serializable
         this.sil = sil;
     }
 
-    public String getSilType() {
-        return silType;
+    public String getSil_type() {
+        return sil_type;
     }
 
-    public void setSilType(String silType) {
-        this.silType = silType;
+    public void setSil_type(String sil_type) {
+        this.sil_type = sil_type;
     }
 
     public Integer getGva() {

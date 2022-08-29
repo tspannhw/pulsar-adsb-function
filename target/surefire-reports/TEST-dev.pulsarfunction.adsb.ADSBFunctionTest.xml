@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="1" failures="0" name="dev.pulsarfunction.adsb.ADSBFunctionTest" time="0.495" errors="0" skipped="0">
+<testsuite tests="1" failures="0" name="dev.pulsarfunction.adsb.ADSBFunctionTest" time="0.565" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="OpenJDK Runtime Environment"/>
     <property name="java.vm.version" value="17.0.3+6-LTS"/>
@@ -30,7 +30,7 @@
     <property name="java.class.version" value="61.0"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
-    <property name="os.version" value="12.4"/>
+    <property name="os.version" value="12.5"/>
     <property name="library.jansi.path" value="/Users/tspann/.sdkman/candidates/maven/current/lib/jansi-native"/>
     <property name="http.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
     <property name="user.home" value="/Users/tspann"/>
@@ -41,7 +41,7 @@
     <property name="java.class.path" value="/Users/tspann/.sdkman/candidates/maven/current/boot/plexus-classworlds-2.6.0.jar"/>
     <property name="java.vm.specification.version" value="17"/>
     <property name="sun.arch.data.model" value="64"/>
-    <property name="sun.java.command" value="org.codehaus.plexus.classworlds.launcher.Launcher clean package"/>
+    <property name="sun.java.command" value="org.codehaus.plexus.classworlds.launcher.Launcher package"/>
     <property name="java.home" value="/Users/tspann/.sdkman/candidates/java/17.0.3.6.1-amzn"/>
     <property name="user.language" value="en"/>
     <property name="java.specification.vendor" value="Oracle Corporation"/>
@@ -61,5 +61,5 @@
     <property name="socksNonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
     <property name="ftp.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
   </properties>
-  <testcase classname="dev.pulsarfunction.adsb.ADSBFunctionTest" name="testADSBFunction" time="0.495"/>
+  <testcase classname="dev.pulsarfunction.adsb.ADSBFunctionTest" name="testADSBFunction" time="0.565"/>
 </testsuite>

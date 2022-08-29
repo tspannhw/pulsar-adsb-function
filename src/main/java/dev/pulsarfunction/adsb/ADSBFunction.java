@@ -58,13 +58,13 @@ public class ADSBFunction implements Function<byte[], Void> {
                 if ( context.getLogger() != null  && context.getLogger().isDebugEnabled() ) {
                     context.getLogger().debug(MESSAGE_JSON + aircraftList.size());
                 }
-
                 for (Aircraft aircraft: aircraftList) {
-                    if (aircraft != null && aircraft.getAltBaro() != null) {
-                        System.out.println("ab:" + aircraft.getAltBaro());
-                        System.out.println("flight:" + aircraft.toString());
+                    if (aircraft != null && aircraft.getAlt_baro() != null) {
+                        if ( aircraft.getAlt_baro() > 0 ) {
 
-                        if ( aircraft.getAltBaro() > 0 ) {
+//                            System.out.println(aircraft.toString());
+//                            System.out.println("schema: " +  JSONSchema.of(Aircraft.class).getSchemaInfo().getSchemaDefinition() );
+
                             context.newOutputMessage(PERSISTENT_PUBLIC_DEFAULT, JSONSchema.of(Aircraft.class))
                                     .key(UUID.randomUUID().toString())
                                     .property(LANGUAGE, JAVA)
