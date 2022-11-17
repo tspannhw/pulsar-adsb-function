@@ -1,0 +1,262 @@
+{
+  "version": 8,
+  "schemaInfo": {
+    "name": "aircraft",
+    "schema": {
+      "type": "record",
+      "name": "Aircraft",
+      "namespace": "dev.pulsarfunction.adsb",
+      "fields": [
+        {
+          "name": "alt_baro",
+          "type": [
+            "null",
+            "int"
+          ]
+        },
+        {
+          "name": "alt_geom",
+          "type": [
+            "null",
+            "int"
+          ]
+        },
+        {
+          "name": "baro_rate",
+          "type": [
+            "null",
+            "int"
+          ]
+        },
+        {
+          "name": "category",
+          "type": [
+            "null",
+            "string"
+          ]
+        },
+        {
+          "name": "emergency",
+          "type": [
+            "null",
+            "string"
+          ]
+        },
+        {
+          "name": "flight",
+          "type": [
+            "null",
+            "string"
+          ]
+        },
+        {
+          "name": "gs",
+          "type": [
+            "null",
+            "double"
+          ]
+        },
+        {
+          "name": "gva",
+          "type": [
+            "null",
+            "int"
+          ]
+        },
+        {
+          "name": "hex",
+          "type": [
+            "null",
+            "string"
+          ]
+        },
+        {
+          "name": "lat",
+          "type": [
+            "null",
+            "double"
+          ]
+        },
+        {
+          "name": "lon",
+          "type": [
+            "null",
+            "double"
+          ]
+        },
+        {
+          "name": "mach",
+          "type": [
+            "null",
+            "double"
+          ]
+        },
+        {
+          "name": "messages",
+          "type": [
+            "null",
+            "int"
+          ]
+        },
+        {
+          "name": "mlat",
+          "type": [
+            "null",
+            {
+              "type": "array",
+              "items": {
+                "type": "record",
+                "name": "Object",
+                "namespace": "java.lang",
+                "fields": []
+              },
+              "java-class": "java.util.List"
+            }
+          ]
+        },
+        {
+          "name": "nac_p",
+          "type": [
+            "null",
+            "int"
+          ]
+        },
+        {
+          "name": "nac_v",
+          "type": [
+            "null",
+            "int"
+          ]
+        },
+        {
+          "name": "nav_altitude_mcp",
+          "type": [
+            "null",
+            "int"
+          ]
+        },
+        {
+          "name": "nav_heading",
+          "type": [
+            "null",
+            "double"
+          ]
+        },
+        {
+          "name": "nav_qnh",
+          "type": [
+            "null",
+            "double"
+          ]
+        },
+        {
+          "name": "nic",
+          "type": [
+            "null",
+            "int"
+          ]
+        },
+        {
+          "name": "nic_baro",
+          "type": [
+            "null",
+            "int"
+          ]
+        },
+        {
+          "name": "rc",
+          "type": [
+            "null",
+            "int"
+          ]
+        },
+        {
+          "name": "rssi",
+          "type": [
+            "null",
+            "double"
+          ]
+        },
+        {
+          "name": "sda",
+          "type": [
+            "null",
+            "int"
+          ]
+        },
+        {
+          "name": "seen",
+          "type": [
+            "null",
+            "double"
+          ]
+        },
+        {
+          "name": "seen_post",
+          "type": [
+            "null",
+            "double"
+          ]
+        },
+        {
+          "name": "sil",
+          "type": [
+            "null",
+            "int"
+          ]
+        },
+        {
+          "name": "sil_type",
+          "type": [
+            "null",
+            "string"
+          ]
+        },
+        {
+          "name": "speed",
+          "type": [
+            "null",
+            "double"
+          ]
+        },
+        {
+          "name": "squawk",
+          "type": [
+            "null",
+            "int"
+          ]
+        },
+        {
+          "name": "tisb",
+          "type": [
+            "null",
+            {
+              "type": "array",
+              "items": "java.lang.Object",
+              "java-class": "java.util.List"
+            }
+          ]
+        },
+        {
+          "name": "track",
+          "type": [
+            "null",
+            "double"
+          ]
+        },
+        {
+          "name": "version",
+          "type": [
+            "null",
+            "int"
+          ]
+        }
+      ]
+    },
+    "type": "JSON",
+    "properties": {
+      "__alwaysAllowNull": "true",
+      "__jsr310ConversionEnabled": "false"
+    }
+  }
+}
