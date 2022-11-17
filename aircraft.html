@@ -1,0 +1,133 @@
+<html>
+<head>
+<title>Apache Pulsar - Websockets - Data Tables - Aircraft (ADS-B)</title>
+<link rel="stylesheet" type="text/css"  href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css">
+<script type="text/javascript" language="javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+</head>
+<body bgcolor="white" text="black">
+<div style="font-size: 30; font-weight: bold; font-family: sans-serif;">
+    <p>
+        <strong><b>Apache Pulsar - Websockets - Data Tables - Aircraft (ADS-B)</b></strong>
+     </p>
+</div>
+<br>
+<table id="aircrafttable" class="display" style="width:100%; text-align:left;">
+        <thead>
+            <tr>
+                       <th valign="left"><b>Altitude</b></th>
+                       <th valign="left"><b>Ground Speed</b></th>
+                       <th valign="left"><b>Mach</b></th>
+                       <th valign="left"><b>Hex</b></th>
+                       <th valign="left"><b>Flight #</b></th>
+                       <th valign="left"><b>Latitude</b></th>
+                       <th valign="left"><b>Longitude</b></th>
+                       <th valign="left"><b>PublishTime</b></th>
+            </tr>
+        </thead>
+        <tfoot>
+            <tr>
+                       <th valign="left"><b>Altitude</b></th>
+                       <th valign="left"><b>Ground Speed</b></th>
+                       <th valign="left"><b>Mach</b></th>
+                       <th valign="left"><b>Hex</b></th>
+                       <th valign="left"><b>Flight #</b></th>
+                       <th valign="left"><b>Latitude</b></th>
+                       <th valign="left"><b>Longitude</b></th>
+                       <th valign="left"><b>PublishTime</b></th>
+            </tr>
+        </tfoot>
+    </table>
+<script>
+function isEmpty(val){
+    return (val === undefined || val == null || val.length <= 0) ? true : false;
+}
+function IsJsonString(str) {
+    try {
+        JSON.parse(str);
+    } catch (e) {
+        return false;
+    }
+    return true;
+}
+$(document).ready(function() {
+    var t = $('#aircrafttable').DataTable();
+
+    var wsUri = "ws://localhost:8080/ws/v2/consumer/persistent/public/default/aircraft/aircraftconsumer?subscriptionType=Shared&receiverQueueSize=500";
+websocket = new WebSocket(wsUri);
+websocket.onopen = function(evt) {
+   console.log('open');
+};
+websocket.onerror = function(evt) {console.log('ERR', evt)};
+websocket.onmessage = function(evt) {
+    var dataPoints = JSON.parse(evt.data);
+    if ( dataPoints === undefined || dataPoints == null || dataPoints.payload === undefined || dataPoints.payload == null ) {
+            return;
+    }
+
+    if (websocket.readyState === WebSocket.OPEN) {
+        websocket.send("{\"messageId\": \"" + dataPoints.messageId + "\"}");
+    }
+    if (IsJsonString(atob(dataPoints.payload))) {
+        var pulsarMessage = JSON.parse(atob(dataPoints.payload));
+	    // ßconsole.log(dataPoints);
+	    console.log(pulsarMessage);
+        if ( pulsarMessage === undefined || pulsarMessage == null ) {
+                 return;
+        }
+        var publishTime = " ";
+         if ( !isEmpty(dataPoints.publishTime) ) {
+                 publishTime = dataPoints.publishTime;
+         }
+
+         var altBaro = "";
+         if ( !isEmpty(pulsarMessage.alt_baro) ) {
+                 altBaro = pulsarMessage.alt_baro;
+         }
+         var gsX = "";
+         if ( !isEmpty(pulsarMessage.gs) ) {
+                 gsX = pulsarMessage.gs;
+         }
+         var machX = "";
+         if ( !isEmpty(pulsarMessage.mach) ) {
+                 machX = pulsarMessage.mach;
+         }
+         var hexX= "";
+         if ( !isEmpty(pulsarMessage.hex) ) {
+                hexX = pulsarMessage.hex;
+         }
+         var flightX= "";
+         if ( !isEmpty(pulsarMessage.flight) ) {
+                flightX = pulsarMessage.flight;
+         }
+         var latX= "";
+         if ( !isEmpty(pulsarMessage.lat) ) {
+                latX = pulsarMessage.lat;
+         }
+         var lonX= "";
+         if ( !isEmpty(pulsarMessage.lon) ) {
+                 lonX = pulsarMessage.lon;
+         }
+
+         t.row.add( [ altBaro, gsX, machX, hexX, flightX, latX, lonX, publishTime ]).draw(true);
+       }
+};
+
+} );
+</script>
+<p>
+<p><img src="nanosmallsticker.png" border="0" width="300"></p>
+<br>
+<a href="https://github.com/tspannhw/FLiP-Py-ADS-B">Source Code</a>
+</p><br>
+&copy; 2021-2022 Tim Spann @PaasDev - datainmotion.dev - streamnative.io
+<br>
+<p>
+<a href="https://github.com/tspannhw/FLiP-Py-ADS-B"><img src="qrcode_github.com.png" border="0" alt="https://github.com/tspannhw/FLiP-Py-ADS-B"></a>
+</p>
+<br>
+<p>
+    <img data-v-c612f5f2="" alt="StreamNative Logo" src="https://streamnative.io/assets/static/sn-logo-vertical-dark.c516648.a34f97839dee38e7499aa0c21d0b2255.png" width="543" data-src="https://streamnative.io/assets/static/sn-logo-vertical-dark.c516648.a34f97839dee38e7499aa0c21d0b2255.png" data-srcset="https://streamnative.io/assets/static/sn-logo-vertical-dark.c516648.a34f97839dee38e7499aa0c21d0b2255.png 543w" data-sizes="(max-width: 543px) 100vw, 543px" class="w-56 mt-4 md:mt-0 g-image g-image--lazy g-image--loaded" srcset="https://streamnative.io/assets/static/sn-logo-vertical-dark.c516648.a34f97839dee38e7499aa0c21d0b2255.png 543w" sizes="(max-width: 543px) 100vw, 543px">
+</p>
+</body>
+</html>

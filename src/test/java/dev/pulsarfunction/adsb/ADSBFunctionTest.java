@@ -65,11 +65,12 @@ public class ADSBFunctionTest {
                 .build();
 
        LocalRunner localRunner = LocalRunner.builder()
-               .brokerServiceUrl("pulsar://pulsar1:6650")
+               .brokerServiceUrl("pulsar://localhost:6650")
                .functionConfig(functionConfig)
                .build();
 
         /**
+         * pulsar1
         LocalRunner localRunner = LocalRunner.builder()
                 .brokerServiceUrl("pulsar+ssl://demo.sndemo.snio.cloud:6651")
                 .clientAuthPlugin("org.apache.pulsar.client.impl.auth.AuthenticationToken")

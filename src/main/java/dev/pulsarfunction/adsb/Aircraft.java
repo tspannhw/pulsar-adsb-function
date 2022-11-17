@@ -84,15 +84,13 @@ public class Aircraft implements Serializable
                 .add("sil_type='" + sil_type + "'")
                 .add("gva=" + gva)
                 .add("sda=" + sda)
-                .add("mlat=" + mlat)
-                .add("tisb=" + tisb)
                 .add("messages=" + messages)
                 .add("seen=" + seen)
                 .add("rssi=" + rssi)
                 .toString();
     }
 
-    public Aircraft(String flight, String category, String emergency, Double mach, Double speed, Integer squawk, String hex, Integer alt_baro, Integer alt_geom, Double gs, Double track, Integer baro_rate, Double nav_qnh, Integer nav_altitude_mcp, Double nav_heading, Double lat, Double lon, Integer nic, Integer rc, Double seen_post, Integer version, Integer nic_baro, Integer nac_p, Integer nac_v, Integer sil, String sil_type, Integer gva, Integer sda, List<Object> mlat, List<Object> tisb, Integer messages, Double seen, Double rssi) {
+    public Aircraft(String flight, String category, String emergency, Double mach, Double speed, Integer squawk, String hex, Integer alt_baro, Integer alt_geom, Double gs, Double track, Integer baro_rate, Double nav_qnh, Integer nav_altitude_mcp, Double nav_heading, Double lat, Double lon, Integer nic, Integer rc, Double seen_post, Integer version, Integer nic_baro, Integer nac_p, Integer nac_v, Integer sil, String sil_type, Integer gva, Integer sda, Integer messages, Double seen, Double rssi) {
         super();
         this.flight = flight;
         this.category = category;
@@ -122,8 +120,6 @@ public class Aircraft implements Serializable
         this.sil_type = sil_type;
         this.gva = gva;
         this.sda = sda;
-        this.mlat = mlat;
-        this.tisb = tisb;
         this.messages = messages;
         this.seen = seen;
         this.rssi = rssi;
@@ -215,8 +211,8 @@ public class Aircraft implements Serializable
     private String sil_type;
     private Integer gva;
     private Integer sda;
-    private List<Object> mlat = null;
-    private List<Object> tisb = null;
+//    private List<Object> mlat = null;
+//    private List<Object> tisb = null;
     private Integer messages;
     private Double seen;
     private Double rssi;
@@ -404,22 +400,6 @@ public class Aircraft implements Serializable
 
     public void setSda(Integer sda) {
         this.sda = sda;
-    }
-
-    public List<Object> getMlat() {
-        return mlat;
-    }
-
-    public void setMlat(List<Object> mlat) {
-        this.mlat = mlat;
-    }
-
-    public List<Object> getTisb() {
-        return tisb;
-    }
-
-    public void setTisb(List<Object> tisb) {
-        this.tisb = tisb;
     }
 
     public Integer getMessages() {
