@@ -64,7 +64,6 @@ use `public/default`;
 
 show tables;
 
-
 describe aircraft;
 
 
@@ -146,6 +145,6 @@ CREATE TABLE `pulsar`.`public/default`.`aircraft` (
   'format' = 'json',
   'admin-url' = 'http://localhost:8080',
   'service-url' = 'pulsar://localhost:6650'
-)
+) 
 
 ````
